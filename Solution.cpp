@@ -1,7 +1,7 @@
 /*
 submitted by : Animesh karmakar
 Purpose:  To get  Paid Internship Opportunity On Machine Learning & Blockchain in Circle FinTech 
-Date : 10 sep, 19
+Date : 11 sep, 19
 
 Overall Method :
 The list of general tasks are 
@@ -13,14 +13,14 @@ The list of general tasks are
 3. If the height constraint of problem doesn't meet for a tile
     iterate through the upper bound and lower bound of tiles 
     array and find a perfect one which also meet the non-decreasing
-    order of price constraint. if not get output: impossible
-    otherwise swap tiles data's.
+    order of price constraint. if not get suitable tile, then it's 
+    impossible to make such ordering. Otherwise swap tiles data's.
 
 4. print the rearranged front row and back row tiles indexes.
 
-Coding explanation:   
+ Explanation:   
                 Only one row of tiles need to rearrage based on given constraints. 
-                I take a structure and a 2-D vector as a type of this structure 
+                Take a structure and a 2-D vector as a type of this structure 
                 and take the input of tiles price, height and also store primitive 
                 indexes because need to output this rearranged indexes of tiles.
                 Overload an operator to sort row's prices in non-decrasing order.
@@ -43,7 +43,7 @@ bool constraint(int i, int k, vector<vector<Tile>> v)
         //only can swap the tiles which have same price to meet non-decreasing order price constraints 
         if(v[1][i].price == v[1][k].price)
         {
-            // height constaints 
+            // check height constaints 
             if(v[1][k].height < v[0][i].height)
             return true;
             else return false;
@@ -91,7 +91,7 @@ int main()
                 ++k;
             }
 
-        //lower bound check for a perfect tiles 
+        //lower bound check for a perfect tile
             k = i;
             while(got == false && k > 0) {
                 k--;
@@ -101,7 +101,7 @@ int main()
                 }
             }
 
-            // not possible to satisfies constraints so no ordering exists
+            // not get suitable tile, so no such ordering exists
             if(got == false)
             {
                 cout<<"impossible"<<endl;
@@ -110,7 +110,7 @@ int main()
         }
     }
     
-    //print output indexes
+    //get an order, print output indexes
     for(int row = 0; row < 2; row++){
     for(int i = 0; i < N; i++) {
         cout<<v[row][i].idx<<" ";
